@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Querry querry = Querry();
+  Querry querry = Querry("", -1, price.NO_RESTRICTION);
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +51,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   return CategoryDetail(querry: querry);
                 }));
               },
-              child: const Text("Start Search",
-              style: TextStyle(color: Colors.white, fontSize: 20.0),),
+              child: const Text(
+                "Start Search",
+                style: TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
             ),
           ],
         ),
