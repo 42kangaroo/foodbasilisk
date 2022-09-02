@@ -9,7 +9,7 @@ enum price {
 class Restaurant {
   AssetImage image = AssetImage("");
   String label = "";
-  String category = "";
+  List<String> category = [];
   String address = "";
   int distance = -1;
   price p = price.NO_RESTRICTION;
