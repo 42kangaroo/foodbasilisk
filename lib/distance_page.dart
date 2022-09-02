@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:foodbasilisk/price_page.dart';
 import 'package:foodbasilisk/querry.dart';
 
 class DistancePage extends StatefulWidget {
   final Querry querry;
-  const DistancePage({
-    Key? key,
-    required this.querry
-  }) : super(key: key);
+
+  const DistancePage({Key? key, required this.querry}) : super(key: key);
 
   @override
   _DistancePageState createState() {
@@ -38,7 +37,7 @@ class _DistancePageState extends State<DistancePage> {
             // 6
             Text(
               'Choose your distance\n'
-                  'Your actual distance: $_sliderVal min',
+              'Your actual distance: $_sliderVal min',
               style: const TextStyle(fontSize: 18),
             ),
 
@@ -60,6 +59,20 @@ class _DistancePageState extends State<DistancePage> {
               // 5
               activeColor: Colors.green,
               inactiveColor: Colors.black,
+            ),
+            TextButton(
+              style: TextButton.styleFrom(backgroundColor: Colors.blue),
+              onPressed: () {
+                Querry updatedQuerry = widget.querry;
+                updatedQuerry.distance = _sliderVal;
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return PricePage(querry: updatedQuerry);
+                }));
+              },
+              child: const Text(
+                "confirm",
+                style: TextStyle(color: Colors.white, fontSize: 20.0),
+              ),
             ),
           ],
         ),
