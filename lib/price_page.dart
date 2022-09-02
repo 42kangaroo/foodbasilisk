@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'querry.dart';
 
 class PricePage extends StatefulWidget {
+  final Querry querry;
   const PricePage({
     Key? key,
+    required this.querry
   }) : super(key: key);
 
   @override
@@ -19,7 +22,7 @@ class _PricePageState extends State<PricePage> {
     // 1
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose your distance'),
+        title: Text('Choose your Prize'),
       ),
       // 2
       body: SafeArea(
@@ -32,9 +35,9 @@ class _PricePageState extends State<PricePage> {
               height: 4,
             ),
             // 6
-            Text(
-              'Choose your distance',
-              style: const TextStyle(fontSize: 18),
+            const Text(
+              'Choose your prize',
+              style: TextStyle(fontSize: 18),
             ),
 
             Slider(
