@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
-class Category {
+class EatCategory {
   AssetImage icon = AssetImage("");
-  String category = ("");
+  String category = "";
+
+  EatCategory(this.icon, this.category);
+
 }
