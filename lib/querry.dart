@@ -6,12 +6,8 @@ enum price {
   NO_RESTRICTION,
 }
 
-class Restaurant {
-  AssetImage image = AssetImage("");
-  String label = "";
+class Querry {
   String category = "";
-  String address = "";
   int distance = -1;
   price p = price.NO_RESTRICTION;
-  String hours = "";
 }
