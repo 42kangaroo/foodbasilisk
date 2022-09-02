@@ -19,7 +19,7 @@ class _PricePageState extends State<PricePage> {
     // 1
     return Scaffold(
       appBar: AppBar(
-        title: Text('Choose your distance'),
+        title: Text('Choose your price range'),
       ),
       // 2
       body: SafeArea(
@@ -33,7 +33,7 @@ class _PricePageState extends State<PricePage> {
             ),
             // 6
             Text(
-              'Choose your distance',
+              'Choose your price range',
               style: const TextStyle(fontSize: 18),
             ),
 
@@ -43,7 +43,7 @@ class _PricePageState extends State<PricePage> {
               max: 20,
               divisions: 19,
               // 2
-              label: 'Choose your distance',
+              label: 'Choose your price range',
               // 3
               value: _sliderVal.toDouble(),
               // 4
