@@ -3,10 +3,8 @@ import 'querry.dart';
 
 class PricePage extends StatefulWidget {
   final Querry querry;
-  const PricePage({
-    Key? key,
-    required this.querry
-  }) : super(key: key);
+
+  const PricePage({Key? key, required this.querry}) : super(key: key);
 
   @override
   _PricePageState createState() {
@@ -15,8 +13,6 @@ class PricePage extends StatefulWidget {
 }
 
 class _PricePageState extends State<PricePage> {
-  int _sliderVal = 1;
-
   @override
   Widget build(BuildContext context) {
     // 1
@@ -28,36 +24,38 @@ class _PricePageState extends State<PricePage> {
       body: SafeArea(
         // 3
         child: Column(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            // 4
-            // 5
+            Card(
+              child: Column(
+                children: const [
+                  Icon(
+                    Icons.attach_money,
+                    size: 200,
+                  ),
+                  Text("Low"),
+                ],
+              ),
+            ),
+            Card(
+              child: Column(
+                children: const [
+                  Icon(Icons.money, size: 200,),
+                  Text("Medium"),
+                ],
+              ),
+            ),
+            Card(
+              child: Column(
+                children: const [
+                  Icon(Icons.price_change_outlined, size: 200,),
+                  Text("No Restriction"),
+                ],
+              ),
+            ),
             const SizedBox(
-              height: 4,
-            ),
-            // 6
-            Text(
-              'Choose your price range',
-              style: const TextStyle(fontSize: 18),
-            ),
-
-            Slider(
-              // 1
-              min: 1,
-              max: 20,
-              divisions: 19,
-              // 2
-              label: 'Choose your price range',
-              // 3
-              value: _sliderVal.toDouble(),
-              // 4
-              onChanged: (newValue) {
-                setState(() {
-                  _sliderVal = newValue.round();
-                });
-              },
-              // 5
-              activeColor: Colors.green,
-              inactiveColor: Colors.black,
+              width: double.infinity,
             ),
           ],
         ),
