@@ -20,7 +20,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.restaurant.label),
+        title: Text(widget.restaurant.lable),
       ),
       body: SafeArea(
         child: Column(
@@ -36,7 +36,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               height: 4,
             ),
             Text(
-              widget.restaurant.label,
+              widget.restaurant.lable,
               style: const TextStyle(fontSize: 18),
             ),
           ],

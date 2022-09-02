@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
-
-import 'category.dart';
-import 'querry.dart';
 import 'package:flutter/material.dart';
 
-class CategoryDetail extends StatefulWidget {
-  Querry querry;
+import 'settings.dart';
+import 'category.dart';
+import 'querry.dart';
+import 'distance_page.dart';
 
-  CategoryDetail({
+class CategoryDetail extends StatefulWidget {
+  final Querry querry;
+
+  const CategoryDetail({
     Key? key,
     required this.querry,
   }) : super(key: key);
@@ -19,6 +21,13 @@ class CategoryDetail extends StatefulWidget {
 }
 
 class _RecipeDetailState extends State<CategoryDetail> {
+  Card createCard(EatCategory category) {
+    return Card(
+      child: Column(
+        children: [Image(image: category.icon), Text(category.category)],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +36,21 @@ class _RecipeDetailState extends State<CategoryDetail> {
         title: Text("Choose Category"),
       ),
       body: SafeArea(
-        child: Text("hlep"),
+        child: ListView.builder(
+          itemCount: categorories.length,
+          itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+            onTap: () {
+              Querry updatedQuerry = widget.querry;
+              updatedQuerry.category = categorories[index].category;
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return DistancePage(querry: updatedQuerry);
+              }));
+            },
+            child: createCard(categorories[index]),
+          );
+        },
+        ),
       ),
     );
   }

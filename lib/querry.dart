@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 enum price {
   LOW,
   MIDDLE,
