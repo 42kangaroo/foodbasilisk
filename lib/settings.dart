@@ -11,7 +11,7 @@ List<Restaurant> restaurants = List<Restaurant>.from([
   Restaurant(
       AssetImage("assets/sushi.png"),
       "Il Panierino",
-      "Italian",
+      ["Italian"],
       "Bäumlihofstrasse 149, 4058 Basel",
       3,
       price.LOW,
