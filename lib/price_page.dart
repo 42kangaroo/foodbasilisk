@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodbasilisk/result_page.dart';
 import 'querry.dart';
 
 class PricePage extends StatefulWidget {
@@ -24,34 +25,74 @@ class _PricePageState extends State<PricePage> {
       body: SafeArea(
         // 3
         child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Card(
-              child: Column(
-                children: const [
-                  Icon(
-                    Icons.attach_money,
-                    size: 200,
-                  ),
-                  Text("Low"),
-                ],
+            GestureDetector(
+              onTap: () {
+                Querry updatedQuerry = widget.querry;
+                updatedQuerry.p = price.LOW;
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ResultPage(querry: updatedQuerry);
+                }));
+              },
+              child: Card(
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.attach_money,
+                      size: 200,
+                    ),
+                    Text(
+                      "Low",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Card(
-              child: Column(
-                children: const [
-                  Icon(Icons.money, size: 200,),
-                  Text("Medium"),
-                ],
+            GestureDetector(
+              onTap: () {
+                Querry updatedQuerry = widget.querry;
+                updatedQuerry.p = price.MIDDLE;
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ResultPage(querry: updatedQuerry);
+                }));
+              },
+              child: Card(
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.money,
+                      size: 200,
+                    ),
+                    Text(
+                      "Medium",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
             ),
-            Card(
-              child: Column(
-                children: const [
-                  Icon(Icons.price_change_outlined, size: 200,),
-                  Text("No Restriction"),
-                ],
+            GestureDetector(
+              onTap: () {
+                Querry updatedQuerry = widget.querry;
+                updatedQuerry.p = price.NO_RESTRICTION;
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return ResultPage(querry: updatedQuerry);
+                }));
+              },
+              child: Card(
+                child: Column(
+                  children: const [
+                    Icon(
+                      Icons.price_change_outlined,
+                      size: 200,
+                    ),
+                    Text(
+                      "No Restriction",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(

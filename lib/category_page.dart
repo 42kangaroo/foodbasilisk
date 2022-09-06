@@ -15,16 +15,22 @@ class CategoryDetail extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RecipeDetailState createState() {
-    return _RecipeDetailState();
+  _CategoryDetailState createState() {
+    return _CategoryDetailState();
   }
 }
 
-class _RecipeDetailState extends State<CategoryDetail> {
+class _CategoryDetailState extends State<CategoryDetail> {
   Card createCard(EatCategory category) {
     return Card(
       child: Column(
-        children: [Image(image: category.icon), Text(category.category)],
+        children: [
+          Image(image: category.icon),
+          Text(
+            category.category,
+            style: const TextStyle(fontSize: 20),
+          )
+        ],
       ),
     );
   }
@@ -36,21 +42,25 @@ class _RecipeDetailState extends State<CategoryDetail> {
         title: Text("Choose Category"),
       ),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: categories.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                Querry updatedQuerry = widget.querry;
-                updatedQuerry.category = categories[index].category;
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return DistancePage(querry: updatedQuerry);
-                }));
+        child: GridView.count(
+            crossAxisCount: 2,
+            childAspectRatio: 0.85,
+            children: List.generate(
+              categories.length,
+              (index) {
+                return GestureDetector(
+                  onTap: () {
+                    Querry updatedQuerry = widget.querry;
+                    updatedQuerry.category = categories[index].category;
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return DistancePage(querry: updatedQuerry);
+                    }));
+                  },
+                  child: createCard(categories[index]),
+                );
               },
-              child: createCard(categories[index]),
-            );
-          },
-        ),
+            )),
       ),
     );
   }
