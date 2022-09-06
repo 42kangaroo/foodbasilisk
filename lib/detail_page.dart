@@ -28,9 +28,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
             SizedBox(
               height: 300,
               width: double.infinity,
-              child: Image(
-                image: AssetImage(""),
-              ),
+              child: widget.restaurant.image
             ),
             const SizedBox(
               height: 4,

@@ -1,7 +1,6 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:foodbasilisk/detail_page.dart';
-import 'package:foodbasilisk/restaurant.dart';
+import 'detail_page.dart';
+import 'restaurant.dart';
 
 import 'settings.dart';
 import 'querry.dart';
@@ -25,9 +24,9 @@ class _ResultPageState extends State<ResultPage> {
     return Card(
       child: Column(
         children: [
-          Image(image: resto.image),
+          resto.image,
           Text(
-            resto.lable,
+            resto.label,
             style: const TextStyle(fontSize: 20),
           )
         ],
@@ -39,7 +38,7 @@ class _ResultPageState extends State<ResultPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Choose Category"),
+        title: const Text("Choose Restaurant"),
       ),
       body: SafeArea(
         child: ListView.builder(
