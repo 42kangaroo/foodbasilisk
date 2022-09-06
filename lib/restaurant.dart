@@ -7,14 +7,14 @@ enum price {
 }
 
 class Restaurant {
-  AssetImage image = AssetImage("");
-  String lable = "";
-  List<String> category = [];
+  Image image = Image.network("");
+  String label = "";
+  List<String> categories = [];
   String address = "";
   int distance = -1;
   price p = price.NO_RESTRICTION;
   String hours = "";
 
-  Restaurant(
-      this.image, this.lable, this.category, this.address, this.distance, this.p, this.hours);
+  Restaurant(this.image, this.label, this.categories, this.address,
+      this.distance, this.p, this.hours);
 }

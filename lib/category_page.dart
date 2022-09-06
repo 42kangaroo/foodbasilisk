@@ -37,19 +37,19 @@ class _RecipeDetailState extends State<CategoryDetail> {
       ),
       body: SafeArea(
         child: ListView.builder(
-          itemCount: categorories.length,
+          itemCount: categories.length,
           itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Querry updatedQuerry = widget.querry;
-              updatedQuerry.category = categorories[index].category;
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DistancePage(querry: updatedQuerry);
-              }));
-            },
-            child: createCard(categorories[index]),
-          );
-        },
+            return GestureDetector(
+              onTap: () {
+                Querry updatedQuerry = widget.querry;
+                updatedQuerry.category = categories[index].category;
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return DistancePage(querry: updatedQuerry);
+                }));
+              },
+              child: createCard(categories[index]),
+            );
+          },
         ),
       ),
     );
