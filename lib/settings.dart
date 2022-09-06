@@ -6,13 +6,13 @@ import 'restaurant.dart';
 List<EatCategory> categories = List<EatCategory>.from([
   EatCategory(AssetImage("assets/donut.png"), "Sweets"),
   EatCategory(AssetImage("assets/pizza.png"), "Italian"),
-  EatCategory(AssetImage("assets/hamburger(1).png"), "Burger"),
+  EatCategory(AssetImage("assets/hamburger (1).png"), "Burger"),
   EatCategory(AssetImage("assets/avocado.png"), "Mexican"),
   EatCategory(AssetImage("assets/sushi.png"), "Japanese"),
-  EatCategory(AssetImage("asset/trolley-cart.png"), "Supermarket"),
+  EatCategory(AssetImage("assets/trolley-cart.png"), "Supermarket"),
   EatCategory(AssetImage("assets/thai-food.png"), "Thai"),
   EatCategory(AssetImage("assets/chinese-food.png"), "Chinese"),
-  EatCategory(AssetImage("assets/doner-kebab(1).png"), "Döner"),
+  EatCategory(AssetImage("assets/doner-kebab (1).png"), "Döner"),
   EatCategory(AssetImage("assets/fried-chicken.png"), "Fast Food"),
 ]);
 
