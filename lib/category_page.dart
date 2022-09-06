@@ -15,16 +15,22 @@ class CategoryDetail extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _RecipeDetailState createState() {
-    return _RecipeDetailState();
+  _CategoryDetailState createState() {
+    return _CategoryDetailState();
   }
 }
 
-class _RecipeDetailState extends State<CategoryDetail> {
+class _CategoryDetailState extends State<CategoryDetail> {
   Card createCard(EatCategory category) {
     return Card(
       child: Column(
-        children: [Image(image: category.icon), Text(category.category)],
+        children: [
+          Image(image: category.icon),
+          Text(
+            category.category,
+            style: const TextStyle(fontSize: 20),
+          )
+        ],
       ),
     );
   }
@@ -36,20 +42,21 @@ class _RecipeDetailState extends State<CategoryDetail> {
         title: Text("Choose Category"),
       ),
       body: SafeArea(
-        child: ListView.builder(
-          itemCount: categorories.length,
-          itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              Querry updatedQuerry = widget.querry;
-              updatedQuerry.category = categorories[index].category;
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return DistancePage(querry: updatedQuerry);
-              }));
-            },
-            child: createCard(categorories[index]),
-          );
-        },
+        child: GridView.count(
+          crossAxisCount: 2,
+          childAspectRatio: 0.85,
+          children: List.generate(categorories.length, (index){
+            return GestureDetector(
+              onTap: () {
+                Querry updatedQuerry = widget.querry;
+                updatedQuerry.category = categorories[index].category;
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return DistancePage(querry: updatedQuerry);
+                }));
+              },
+              child: createCard(categorories[index]),
+            );
+          },)
         ),
       ),
     );
