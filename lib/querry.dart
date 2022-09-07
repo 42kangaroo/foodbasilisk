@@ -1,8 +1,4 @@
-enum price {
-  LOW,
-  MIDDLE,
-  NO_RESTRICTION,
-}
+import 'price_enum.dart';
 
 class Querry {
   String category = "";

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'category.dart';
 import 'restaurant.dart';
+import 'price_enum.dart';
 
 List<EatCategory> categories = List<EatCategory>.from([
   EatCategory(AssetImage("assets/donut.png"), "Sweets"),
@@ -68,7 +69,7 @@ List<Restaurant> restaurants = List<Restaurant>.from([
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
   Restaurant(
-      Image.network(""),
+      Image.network("http://basel.elmexicano.ch/wp-content/uploads/2016/02/page1_img1.jpg"),
       "El Mexicano",
       ["Mexican"],
       "Steinenvorstadt 58, 4051 Basel",

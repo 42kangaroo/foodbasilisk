@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodbasilisk/result_page.dart';
 import 'querry.dart';
+import 'price_enum.dart';
 
 class PricePage extends StatefulWidget {
   final Querry querry;

@@ -1,8 +1,25 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:foodbasilisk/restaurant.dart';
 import 'category_page.dart';
 import 'querry.dart';
+import 'price_enum.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  var db = FirebaseFirestore.instance;
+  List<Restaurant> resList = List<Restaurant>.from([]);
+  await db.collection("restaurants").get().then((value) {
+    for (var element in value.docs) {
+      resList.add(Restaurant.fromMap(element.data()));
+    }
+  });
+  print(resList.first.p.name);
   runApp(const FoodBasilisk());
 }
 
