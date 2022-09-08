@@ -25,18 +25,23 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
       body: SafeArea(
         child: Column(
           children: [
-            SizedBox(
-              height: 300,
-              width: double.infinity,
-              child: widget.restaurant.image
-            ),
+            /* SizedBox(
+                height: 300,
+                width: double.infinity,
+                child: widget.restaurant.image),*/
             const SizedBox(
               height: 4,
             ),
             Text(
               widget.restaurant.label,
-              style: const TextStyle(fontSize: 18),
+              style: const TextStyle(fontSize: 24),
             ),
+            ListView.builder(
+              itemCount: widget.restaurant.categories.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Text(widget.restaurant.categories[index]);
+              },
+            )
           ],
         ),
       ),

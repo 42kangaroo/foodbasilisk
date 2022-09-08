@@ -76,5 +76,15 @@ List<Restaurant> restaurants = List<Restaurant>.from([
       price.NO_RESTRICTION,
       "Freitag \n 07:00–20:30 \n Samstag \n 09:15–20:30\n Sonntag \n "
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
+          "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
+  Restaurant(
+      Image.network(""),
+      "Mister Wong",
+      ["Chinese"],
+      "Steinenvorstadt 23, 4051 Basel",
+      12,
+      price.MIDDLE,
+      "Freitag \n 07:00–20:30 \n Samstag \n 09:15–20:30\n Sonntag \n "
+          "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30")
 ]);
