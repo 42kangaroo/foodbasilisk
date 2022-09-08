@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:foodbasilisk/restaurant.dart';
+import 'add_page.dart';
+import 'restaurant.dart';
 import 'category_page.dart';
 import 'querry.dart';
 import 'price_enum.dart';
@@ -19,7 +20,7 @@ Future<void> main() async {
       resList.add(Restaurant.fromMap(element.data()));
     }
   });
-  print(resList.first.p.name);
+  print(resList.length);
   runApp(const FoodBasilisk());
 }
 
@@ -75,6 +76,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return AddPage();
+          }));
+        },
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
       ),
     );
   }
