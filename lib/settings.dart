@@ -18,7 +18,8 @@ List<EatCategory> categories = List<EatCategory>.from([
 
 List<Restaurant> restaurants = List<Restaurant>.from([
   Restaurant(
-      Image.network(""),
+      Image.network(
+          "https://en.wikipedia.org/wiki/File:Good_Food_Display_-_NCI_Visuals_Online.jpg"),
       "Il Panierino",
       ["Italian"],
       "Bäumlihofstrasse 149, 4058 Basel",
@@ -28,7 +29,8 @@ List<Restaurant> restaurants = List<Restaurant>.from([
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
   Restaurant(
-      Image.network(""),
+      Image.network(
+          "https://en.wikipedia.org/wiki/File:Good_Food_Display_-_NCI_Visuals_Online.jpg"),
       "Holy Cow",
       ["Burger"],
       "Steinenvorstadt 30, 4051 Basel",
@@ -38,7 +40,8 @@ List<Restaurant> restaurants = List<Restaurant>.from([
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
   Restaurant(
-      Image.network(""),
+      Image.network(
+          "https://en.wikipedia.org/wiki/File:Good_Food_Display_-_NCI_Visuals_Online.jpg"),
       "YamYam",
       ["Chinese"],
       "c/o Bibliothek Bar, Kohlenberg 7, 4051 Basel",
@@ -48,7 +51,8 @@ List<Restaurant> restaurants = List<Restaurant>.from([
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
   Restaurant(
-      Image.network(""),
+      Image.network(
+          "https://en.wikipedia.org/wiki/File:Good_Food_Display_-_NCI_Visuals_Online.jpg"),
       "VITO",
       ["Italian"],
       "Aeschengraben 14, 4051 Basel",
@@ -58,7 +62,8 @@ List<Restaurant> restaurants = List<Restaurant>.from([
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
   Restaurant(
-      Image.network(""),
+      Image.network(
+          "https://en.wikipedia.org/wiki/File:Good_Food_Display_-_NCI_Visuals_Online.jpg"),
       "Spiga",
       ["Italian"],
       "Disengage 9, 4051 Basel",
@@ -68,7 +73,8 @@ List<Restaurant> restaurants = List<Restaurant>.from([
           "09:15–20:30 \n Montag \n 07:00–20:30 \n Dienstag \n 07:00–20:30 \n "
           "Mittwoch\n07:00–20:30\nDonnerstag\n07:00–20:30"),
   Restaurant(
-      Image.network(""),
+      Image.network(
+          "https://en.wikipedia.org/wiki/File:Good_Food_Display_-_NCI_Visuals_Online.jpg"),
       "El Mexicano",
       ["Mexican"],
       "Steinenvorstadt 58, 4051 Basel",
