@@ -45,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
+              style: TextButton.styleFrom(backgroundColor: Colors.blueGrey),
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return CategoryDetail(querry: querry);
