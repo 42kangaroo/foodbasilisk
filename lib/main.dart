@@ -1,8 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'add_page.dart';
 import 'category_page.dart';
 import 'querry.dart';
+import 'price_enum.dart';
+import 'firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  var db = FirebaseFirestore.instance;
+  await db.collection("restaurants").get().then((value) {
+    print("fetch success");
+  });
   runApp(const FoodBasilisk());
 }
 
@@ -58,6 +71,15 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return AddPage();
+          }));
+        },
+        tooltip: 'Add',
+        child: const Icon(Icons.add),
       ),
     );
   }

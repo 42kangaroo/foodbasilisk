@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'category.dart';
 import 'restaurant.dart';
+import 'price_enum.dart';
 
 List<EatCategory> categories = List<EatCategory>.from([
   EatCategory(AssetImage("assets/donut.png"), "Sweets"),

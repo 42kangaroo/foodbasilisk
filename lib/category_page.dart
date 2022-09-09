@@ -43,24 +43,31 @@ class _CategoryDetailState extends State<CategoryDetail> {
       ),
       body: SafeArea(
         child: GridView.count(
-            crossAxisCount: 2,
-            childAspectRatio: 0.85,
-            children: List.generate(
-              categories.length,
-              (index) {
-                return GestureDetector(
-                  onTap: () {
-                    Querry updatedQuerry = widget.querry;
-                    updatedQuerry.category = categories[index].category;
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return DistancePage(querry: updatedQuerry);
-                    }));
-                  },
-                  child: createCard(categories[index]),
-                );
-              },
-            )),
+          crossAxisCount: 2,
+          childAspectRatio: 0.85,
+          children: List.generate(
+            categories.length,
+            (index) {
+              return GestureDetector(
+                onTap: () {
+                  Querry updatedQuerry = widget.querry;
+                  updatedQuerry.category = categories[index].category;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return DistancePage(querry: updatedQuerry);
+                  }));
+                },
+                child: createCard(categories[index]),
+              );
+            },
+          ),
+        ),
+      ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        tooltip: 'Back',
+        child: const Icon(Icons.arrow_back_outlined),
       ),
     );
   }

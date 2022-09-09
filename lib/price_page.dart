@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodbasilisk/result_page.dart';
 import 'querry.dart';
+import 'price_enum.dart';
 
 class PricePage extends StatefulWidget {
   final Querry querry;
@@ -102,6 +103,13 @@ class _PricePageState extends State<PricePage> {
             ],
           ),
         ),
+      ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        tooltip: 'Back',
+        child: const Icon(Icons.arrow_back_outlined),
       ),
     );
   }
