@@ -77,6 +77,13 @@ class _DistancePageState extends State<DistancePage> {
           ],
         ),
       ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        tooltip: 'Back',
+        child: const Icon(Icons.arrow_back_outlined),
+      ),
     );
   }
 }

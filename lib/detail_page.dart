@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:foodbasilisk/settings.dart';
 import 'restaurant.dart';
 
 class RestaurantDetail extends StatefulWidget {
@@ -44,6 +43,13 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
             ),
           ],
         ),
+      ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        tooltip: 'Back',
+        child: const Icon(Icons.arrow_back_outlined),
       ),
     );
   }

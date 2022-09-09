@@ -104,6 +104,13 @@ class _PricePageState extends State<PricePage> {
           ),
         ),
       ),
+      floatingActionButton:  FloatingActionButton(
+        onPressed: () {
+          Navigator.popUntil(context, (route) => route.isFirst);
+        },
+        tooltip: 'Back',
+        child: const Icon(Icons.arrow_back_outlined),
+      ),
     );
   }
 }

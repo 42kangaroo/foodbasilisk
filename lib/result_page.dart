@@ -39,6 +39,7 @@ class _ResultPageState extends State<ResultPage> {
                 children: [
                   Text(
                     resto.label,
+                    textAlign: TextAlign.center,
                     style: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 20),
                   ),
@@ -100,6 +101,13 @@ class _ResultPageState extends State<ResultPage> {
                 );
               },
             ),
+          ),
+          floatingActionButton:  FloatingActionButton(
+            onPressed: () {
+              Navigator.popUntil(context, (route) => route.isFirst);
+            },
+            tooltip: 'Back',
+            child: const Icon(Icons.arrow_back_outlined),
           ),
         );
       });

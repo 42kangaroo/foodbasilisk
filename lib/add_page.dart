@@ -356,7 +356,7 @@ class _AddPageState extends State<AddPage> {
           }
           widget.db.collection("restaurants").add(resto.toMap()).then(
               (DocumentReference doc) =>
-                  print('DocumentSnapshot added with ID: ${doc.id}'));
+                  print('Restaurant added with ID: ${doc.id}'));
         },
         tooltip: 'Add',
         child: const Icon(Icons.add),

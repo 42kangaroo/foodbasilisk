@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'add_page.dart';
-import 'restaurant.dart';
 import 'category_page.dart';
 import 'querry.dart';
 import 'price_enum.dart';
@@ -14,13 +13,9 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   var db = FirebaseFirestore.instance;
-  List<Restaurant> resList = List<Restaurant>.from([]);
   await db.collection("restaurants").get().then((value) {
-    for (var element in value.docs) {
-      resList.add(Restaurant.fromMap(element.data()));
-    }
+    print("fetch success");
   });
-  print(resList.length);
   runApp(const FoodBasilisk());
 }
 
@@ -83,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
             return AddPage();
           }));
         },
-        tooltip: 'Increment',
+        tooltip: 'Add',
         child: const Icon(Icons.add),
       ),
     );
