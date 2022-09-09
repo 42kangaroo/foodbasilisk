@@ -38,12 +38,11 @@ class _PricePageState extends State<PricePage> {
                 },
                 child: Card(
                   child: Column(
-                    children: const [
-                      Icon(
-                        Icons.attach_money,
-                        size: 200,
+                    children: [
+                      Image.asset(
+                        "assets/LOW.png",
                       ),
-                      Text(
+                      const Text(
                         "Low",
                         style: TextStyle(fontSize: 20),
                       ),
@@ -61,12 +60,11 @@ class _PricePageState extends State<PricePage> {
                 },
                 child: Card(
                   child: Column(
-                    children: const [
-                      Icon(
-                        Icons.money,
-                        size: 200,
+                    children: [
+                      Image.asset(
+                        "assets/MEDIUM.png",
                       ),
-                      Text(
+                      const Text(
                         "Medium",
                         style: TextStyle(fontSize: 20),
                       ),
@@ -84,12 +82,11 @@ class _PricePageState extends State<PricePage> {
                 },
                 child: Card(
                   child: Column(
-                    children: const [
-                      Icon(
-                        Icons.price_change_outlined,
-                        size: 200,
+                    children: [
+                      Image.asset(
+                        "assets/HIGH.png",
                       ),
-                      Text(
+                      const Text(
                         "No Restriction",
                         style: TextStyle(fontSize: 20),
                       ),
@@ -104,7 +101,7 @@ class _PricePageState extends State<PricePage> {
           ),
         ),
       ),
-      floatingActionButton:  FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);
         },
