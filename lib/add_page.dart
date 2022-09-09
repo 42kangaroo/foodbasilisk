@@ -1,14 +1,19 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:foodbasilisk/price_enum.dart';
+import 'category.dart';
+import 'price_enum.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'restaurant.dart';
+import 'settings.dart';
 
 class AddPage extends StatefulWidget {
   FirebaseFirestore db;
+
   AddPage({
     Key? key,
-  }) : db = FirebaseFirestore.instance, super(key: key);
+  })  : db = FirebaseFirestore.instance,
+        super(key: key);
+
   @override
   _AddPageState createState() {
     return _AddPageState();
@@ -17,7 +22,7 @@ class AddPage extends StatefulWidget {
 
 class _AddPageState extends State<AddPage> {
   Restaurant resto =
-      Restaurant(Image.network(""), "", [""], "", 5, price.MIDDLE, "");
+      Restaurant(Image.network(""), "", ["Döner"], "", 5, price.MIDDLE, "");
   List<String> weekdays = List<String>.from(["", "", "", "", "", "", ""]);
 
   Padding makeWeekday(String weekday, int index) {
@@ -135,14 +140,20 @@ class _AddPageState extends State<AddPage> {
                     )),
                     Expanded(
                       flex: 3,
-                      child: TextField(
-                        onChanged: (val) => resto.categories[0] = val,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Döner',
-                        ),
+                      child: DropdownButton(
+                        value: resto.categories[0],
+                        items: categories
+                            .map((EatCategory item) => DropdownMenuItem(
+                                value: item.category,
+                                child: Text(item.category)))
+                            .toList(),
+                        onChanged: (String? val) {
+                          setState(() {
+                            resto.categories[0] = val!;
+                          });
+                        },
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -230,9 +241,9 @@ class _AddPageState extends State<AddPage> {
                         },
                         child: Card(
                           shadowColor: (resto.p == price.LOW
-                              ? Colors.yellow
+                              ? Colors.blue
                               : Colors.black),
-                          elevation: 5,
+                          elevation: 7,
                           child: Column(
                             children: const [
                               Icon(
@@ -257,9 +268,9 @@ class _AddPageState extends State<AddPage> {
                         },
                         child: Card(
                           shadowColor: (resto.p == price.MIDDLE
-                              ? Colors.yellow
+                              ? Colors.blue
                               : Colors.black),
-                          elevation: 5,
+                          elevation: 7,
                           child: Column(
                             children: const [
                               Icon(
@@ -284,9 +295,9 @@ class _AddPageState extends State<AddPage> {
                         },
                         child: Card(
                           shadowColor: (resto.p == price.NO_RESTRICTION
-                              ? Colors.yellow
+                              ? Colors.blue
                               : Colors.black),
-                          elevation: 5,
+                          elevation: 7,
                           child: Column(
                             children: const [
                               Icon(
@@ -343,8 +354,9 @@ class _AddPageState extends State<AddPage> {
                 .show();
             return;
           }
-          widget.db.collection("restaurants").add(resto.toMap()).then((DocumentReference doc) =>
-              print('DocumentSnapshot added with ID: ${doc.id}'));
+          widget.db.collection("restaurants").add(resto.toMap()).then(
+              (DocumentReference doc) =>
+                  print('DocumentSnapshot added with ID: ${doc.id}'));
         },
         tooltip: 'Add',
         child: const Icon(Icons.add),

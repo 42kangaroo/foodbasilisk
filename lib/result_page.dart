@@ -22,16 +22,36 @@ class ResultPage extends StatefulWidget {
 class _ResultPageState extends State<ResultPage> {
   List<Restaurant> res = [];
 
-  Card createCard(Restaurant resto) {
-    return Card(
-      child: Column(
-        children: [
-          resto.image,
-          Text(
-            resto.label,
-            style: const TextStyle(fontSize: 20),
-          )
-        ],
+  Container createCard(Restaurant resto) {
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 3, horizontal: 10),
+      child: Card(
+        child: Row(
+          children: [
+            Expanded(
+              child: resto.image,
+            ),
+            const SizedBox(
+              width: 10,
+            ),
+            Expanded(
+              child: Column(
+                children: [
+                  Text(
+                    resto.label,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                  Text(
+                    resto.address,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 15, color: Colors.grey),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -39,7 +59,11 @@ class _ResultPageState extends State<ResultPage> {
   Future<void> getData() async {
     res.clear();
     FirebaseFirestore db = FirebaseFirestore.instance;
-    List<List<int>> helperPrice = [[0], [0,1],[0,1,2]];
+    List<List<int>> helperPrice = [
+      [0],
+      [0, 1],
+      [0, 1, 2]
+    ];
     await db
         .collection("restaurants")
         .where("categories", arrayContains: widget.querry.category)

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodbasilisk/settings.dart';
 import 'restaurant.dart';
 
 class RestaurantDetail extends StatefulWidget {
@@ -25,10 +26,10 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
       body: SafeArea(
         child: Column(
           children: [
-            /* SizedBox(
+            SizedBox(
                 height: 300,
                 width: double.infinity,
-                child: widget.restaurant.image),*/
+                child: widget.restaurant.image),
             const SizedBox(
               height: 4,
             ),
@@ -36,12 +37,11 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               widget.restaurant.label,
               style: const TextStyle(fontSize: 24),
             ),
-            ListView.builder(
-              itemCount: widget.restaurant.categories.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Text(widget.restaurant.categories[index]);
-              },
-            )
+            Column(
+              children: widget.restaurant.categories
+                  .map((String val) => Text(val))
+                  .toList(),
+            ),
           ],
         ),
       ),
