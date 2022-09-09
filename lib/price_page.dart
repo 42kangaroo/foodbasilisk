@@ -15,6 +15,31 @@ class PricePage extends StatefulWidget {
 }
 
 class _PricePageState extends State<PricePage> {
+  GestureDetector makePrice(String asset, String name, price p) {
+    return GestureDetector(
+      onTap: () {
+        Querry updatedQuerry = widget.querry;
+        updatedQuerry.p = p;
+        Navigator.push(context, MaterialPageRoute(builder: (context) {
+          return ResultPage(querry: updatedQuerry);
+        }));
+      },
+      child: Card(
+        child: Column(
+          children: [
+            Image.asset(
+              asset,
+            ),
+            Text(
+              name,
+              style: const TextStyle(fontSize: 20),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     // 1
@@ -28,72 +53,9 @@ class _PricePageState extends State<PricePage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              GestureDetector(
-                onTap: () {
-                  Querry updatedQuerry = widget.querry;
-                  updatedQuerry.p = price.LOW;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ResultPage(querry: updatedQuerry);
-                  }));
-                },
-                child: Card(
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/LOW.png",
-                      ),
-                      const Text(
-                        "Low",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Querry updatedQuerry = widget.querry;
-                  updatedQuerry.p = price.MIDDLE;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ResultPage(querry: updatedQuerry);
-                  }));
-                },
-                child: Card(
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/MEDIUM.png",
-                      ),
-                      const Text(
-                        "Medium",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: () {
-                  Querry updatedQuerry = widget.querry;
-                  updatedQuerry.p = price.NO_RESTRICTION;
-                  Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return ResultPage(querry: updatedQuerry);
-                  }));
-                },
-                child: Card(
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        "assets/HIGH.png",
-                      ),
-                      const Text(
-                        "No Restriction",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              makePrice("assets/LOW.png", "Low", price.LOW),
+              makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
+              makePrice("assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
               const SizedBox(
                 width: double.infinity,
               ),
