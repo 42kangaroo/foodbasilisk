@@ -24,33 +24,26 @@ class _AddPageState extends State<AddPage> {
   Restaurant resto =
       Restaurant(Image.network(""), "", ["Döner"], "", 5, price.MIDDLE, "");
   List<String> weekdays = List<String>.from(["", "", "", "", "", "", ""]);
+  List<TextEditingController> controllers =
+      List<TextEditingController>.generate(
+          11, (index) => TextEditingController());
+
+  void reset() {
+    resto =
+        Restaurant(Image.network(""), "", ["Döner"], "", 5, price.MIDDLE, "");
+    weekdays = List<String>.from(["", "", "", "", "", "", ""]);
+    controllers = List<TextEditingController>.generate(
+        11, (index) => TextEditingController());
+  }
 
   Padding makeWeekday(String weekday, int index) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 5,
-        horizontal: 10,
-      ),
-      child: Row(
-        children: [
-          Expanded(
-              child: Text(
-            weekday,
-            style: TextStyle(fontSize: 20),
-          )),
-          Expanded(
-            flex: 3,
-            child: TextField(
-              onChanged: (val) => weekdays[index] = val,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: '9:00 - 12:00',
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+    return makeTextFieldQuestion(
+        weekday,
+        "9:00 - 12:00",
+        (val) => setState(() {
+              weekdays[index] = val;
+            }),
+        controllers[index + 4]);
   }
 
   bool checkEverything() {
@@ -65,6 +58,103 @@ class _AddPageState extends State<AddPage> {
         days;
   }
 
+  Expanded makePrice(String asset, String name, price p) {
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            resto.p = p;
+          });
+        },
+        child: Card(
+          shadowColor: (resto.p == p ? Colors.blue : Colors.black),
+          elevation: 7,
+          child: Column(
+            children: [
+              Image.asset(asset),
+              Text(
+                name,
+                style: const TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Expanded makeText(String text) {
+    return Expanded(
+      child: Text(
+        text,
+        style: const TextStyle(fontSize: 20),
+      ),
+    );
+  }
+
+  Padding makeTextFieldQuestion(String question, String hint,
+      void Function(String) fieldChanger, TextEditingController controller) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        vertical: 5,
+        horizontal: 10,
+      ),
+      child: Row(
+        children: [
+          makeText(question),
+          Expanded(
+            flex: 3,
+            child: TextField(
+              onChanged: fieldChanger,
+              controller: controller,
+              decoration: InputDecoration(
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                      color:
+                          (controller.text.isEmpty ? Colors.red : Colors.green),
+                      width: 1.0),
+                ),
+                hintText: hint,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Padding makeDropdownButton(int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: DecoratedBox(
+        decoration: BoxDecoration(
+          border: Border.all(color: Colors.blue, width: 1),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: DropdownButton(
+          value: resto.categories[index],
+          items: categories
+              .map((EatCategory item) => DropdownMenuItem(
+                  value: item.category,
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(item.category))))
+              .toList(),
+          onChanged: (String? val) {
+            setState(() {
+              resto.categories[index] = val!;
+            });
+          },
+          isExpanded: true,
+          underline: SizedBox(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,88 +165,84 @@ class _AddPageState extends State<AddPage> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              makeTextFieldQuestion(
+                  "Lable:", 'Enter the name of the restaurant', (val) {
+                resto.label = val;
+                setState(() {});
+              }, controllers[0]),
+              makeTextFieldQuestion("Image Url:", "https://google.com", (val) {
+                resto.image = Image.network(val);
+                setState(() {});
+              }, controllers[1]),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 5,
                   horizontal: 10,
                 ),
                 child: Row(
+                  crossAxisAlignment: (resto.categories.length > 2
+                      ? CrossAxisAlignment.start
+                      : CrossAxisAlignment.center),
                   children: [
-                    const Expanded(
-                      child: Text(
-                        "Lable:",
-                        style: TextStyle(fontSize: 20),
+                    Expanded(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          const Text("Category:",
+                              style: TextStyle(fontSize: 20)),
+                          Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 10, 10, 5),
+                            child: TextButton(
+                              onPressed: () {
+                                resto.categories.add("Döner");
+                                setState(() {});
+                              },
+                              style: TextButton.styleFrom(
+                                  backgroundColor: Colors.blue),
+                              child: const Text(
+                                "Add",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          (resto.categories.length > 1
+                              ? Padding(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 5, 10, 5),
+                                  child: TextButton(
+                                    onPressed: () {
+                                      resto.categories.removeLast();
+                                      setState(() {});
+                                    },
+                                    style: TextButton.styleFrom(
+                                        backgroundColor: Colors.blue),
+                                    child: const Text(
+                                      "Remove",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox())
+                        ],
                       ),
                     ),
                     Expanded(
                       flex: 3,
-                      child: TextField(
-                        onChanged: (val) => resto.label = val,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Enter the name of the restaurant',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 10,
-                ),
-                child: Row(
-                  children: [
-                    const Expanded(
-                        child: Text(
-                      "Image Url:",
-                      style: TextStyle(fontSize: 20),
-                    )),
-                    Expanded(
-                      flex: 3,
-                      child: TextField(
-                        onChanged: (val) => resto.image = Image.network(val),
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'https://google.com',
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 10,
-                ),
-                child: Row(
-                  children: [
-                    const Expanded(
-                        child: Text(
-                      "Category:",
-                      style: TextStyle(fontSize: 20),
-                    )),
-                    Expanded(
-                      flex: 3,
-                      child: DropdownButton(
-                        value: resto.categories[0],
-                        items: categories
-                            .map((EatCategory item) => DropdownMenuItem(
-                                value: item.category,
-                                child: Text(item.category)))
-                            .toList(),
-                        onChanged: (String? val) {
-                          setState(() {
-                            resto.categories[0] = val!;
-                          });
-                        },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: List<Widget>.generate(resto.categories.length,
+                            (index) => makeDropdownButton(index)),
                       ),
                     ),
                   ],
                 ),
               ),
+              makeTextFieldQuestion(
+                  "Address:", 'Zu den Drei Linden 60, 4058 Basel', (val) {
+                resto.address = val;
+                setState(() {});
+              }, controllers[3]),
               Padding(
                 padding: const EdgeInsets.symmetric(
                   vertical: 5,
@@ -164,55 +250,21 @@ class _AddPageState extends State<AddPage> {
                 ),
                 child: Row(
                   children: [
-                    const Expanded(
-                        child: Text(
-                      "Address:",
-                      style: TextStyle(fontSize: 20),
-                    )),
-                    Expanded(
-                      flex: 3,
-                      child: TextField(
-                        onChanged: (val) => resto.address = val,
-                        decoration: const InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: 'Zu den Drei Linden 60, 4058 Basel',
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 5,
-                  horizontal: 10,
-                ),
-                child: Row(
-                  children: [
-                    Expanded(
-                        child: Text(
-                      "Distance: ${resto.distance} min",
-                      style: const TextStyle(fontSize: 20),
-                    )),
+                    makeText("Distance: ${resto.distance} min"),
                     Expanded(
                       flex: 3,
                       child: Slider(
-                        // 1
                         min: 5,
                         max: 25,
                         divisions: 4,
-                        // 2
                         label: 'Choose your distance in minutes',
-                        // 3
                         value: resto.distance.toDouble(),
-                        // 4
                         onChanged: (newValue) {
                           setState(() {
                             resto.distance = newValue.round();
                           });
                         },
-                        // 5
-                        activeColor: Colors.green,
+                        activeColor: Colors.blue,
                         inactiveColor: Colors.black,
                       ),
                     ),
@@ -226,93 +278,10 @@ class _AddPageState extends State<AddPage> {
                 ),
                 child: Row(
                   children: [
-                    const Expanded(
-                      child: Text(
-                        "Price: ",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            resto.p = price.LOW;
-                          });
-                        },
-                        child: Card(
-                          shadowColor: (resto.p == price.LOW
-                              ? Colors.blue
-                              : Colors.black),
-                          elevation: 7,
-                          child: Column(
-                            children: const [
-                              Icon(
-                                Icons.attach_money,
-                                size: 50,
-                              ),
-                              Text(
-                                "Low",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            resto.p = price.MIDDLE;
-                          });
-                        },
-                        child: Card(
-                          shadowColor: (resto.p == price.MIDDLE
-                              ? Colors.blue
-                              : Colors.black),
-                          elevation: 7,
-                          child: Column(
-                            children: const [
-                              Icon(
-                                Icons.money,
-                                size: 50,
-                              ),
-                              Text(
-                                "Medium",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            resto.p = price.NO_RESTRICTION;
-                          });
-                        },
-                        child: Card(
-                          shadowColor: (resto.p == price.NO_RESTRICTION
-                              ? Colors.blue
-                              : Colors.black),
-                          elevation: 7,
-                          child: Column(
-                            children: const [
-                              Icon(
-                                Icons.price_change_outlined,
-                                size: 50,
-                              ),
-                              Text(
-                                "High",
-                                style: TextStyle(fontSize: 20),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    makeText("Price:"),
+                    makePrice("assets/LOW.png", "Low", price.LOW),
+                    makePrice("assets/MEDIUM.png", "Middle", price.MIDDLE),
+                    makePrice("assets/HIGH.png", "High", price.NO_RESTRICTION),
                   ],
                 ),
               ),
@@ -354,9 +323,18 @@ class _AddPageState extends State<AddPage> {
                 .show();
             return;
           }
-          widget.db.collection("restaurants").add(resto.toMap()).then(
-              (DocumentReference doc) =>
-                  print('Restaurant added with ID: ${doc.id}'));
+          widget.db
+              .collection("restaurants")
+              .add(resto.toMap())
+              .then((DocumentReference doc) {
+            Alert(
+                    context: context,
+                    title: "Success",
+                    desc: "The new restaurant was added without problems")
+                .show();
+          });
+          reset();
+          setState(() {});
         },
         tooltip: 'Add',
         child: const Icon(Icons.add),

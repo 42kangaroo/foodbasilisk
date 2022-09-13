@@ -15,26 +15,36 @@ class PricePage extends StatefulWidget {
 }
 
 class _PricePageState extends State<PricePage> {
-  GestureDetector makePrice(String asset, String name, price p) {
-    return GestureDetector(
-      onTap: () {
-        Querry updatedQuerry = widget.querry;
-        updatedQuerry.p = p;
-        Navigator.push(context, MaterialPageRoute(builder: (context) {
-          return ResultPage(querry: updatedQuerry);
-        }));
-      },
-      child: Card(
-        child: Column(
-          children: [
-            Image.asset(
-              asset,
-            ),
-            Text(
-              name,
-              style: const TextStyle(fontSize: 20),
-            ),
-          ],
+  Container makePrice(String asset, String name, price p) {
+    return Container(
+      width: 100,
+      child: GestureDetector(
+        onTap: () {
+          Querry updatedQuerry = widget.querry;
+          updatedQuerry.p = p;
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ResultPage(querry: updatedQuerry);
+          }));
+        },
+        child: Card(
+          child: Row(
+
+            children: [
+              Expanded(
+                child: Image.asset(
+                  asset,
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    name,
+                    style: const TextStyle(fontSize: 30),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -49,20 +59,17 @@ class _PricePageState extends State<PricePage> {
       ),
       // 2
       body: SafeArea(
-        // 3
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              makePrice("assets/LOW.png", "Low", price.LOW),
-              makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
-              makePrice("assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
-              const SizedBox(
-                width: double.infinity,
-              ),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            makePrice("assets/LOW.png", "Low", price.LOW),
+            makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
+            makePrice(
+                "assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
+          ],
         ),
       ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);

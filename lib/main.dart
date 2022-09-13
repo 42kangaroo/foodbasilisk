@@ -13,7 +13,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   var db = FirebaseFirestore.instance;
-  await db.collection("restaurants").get().then((value) {
+  await db.collection("restaurants").limit(1).get().then((value) {
     print("fetch success");
   });
   runApp(const FoodBasilisk());
