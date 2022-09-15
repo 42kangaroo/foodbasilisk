@@ -54,23 +54,31 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blueGrey),
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CategoryDetail(querry: querry);
-                }));
-              },
-              child: const Text(
-                "Start Search",
-                style: TextStyle(color: Colors.white, fontSize: 20.0),
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/BaselMunster.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                style: TextButton.styleFrom(backgroundColor: Colors.blueGrey),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return CategoryDetail(querry: querry);
+                  }));
+                },
+                child: const Text(
+                  "Start Search",
+                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
