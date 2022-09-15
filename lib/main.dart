@@ -28,7 +28,7 @@ class FoodBasilisk extends StatelessWidget {
     return MaterialApp(
       title: 'Foodbasilisk',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.grey,
       ),
       home: const MyHomePage(title: 'Foodbasilisk'),
     );
