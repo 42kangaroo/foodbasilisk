@@ -29,6 +29,7 @@ class FoodBasilisk extends StatelessWidget {
       title: 'Foodbasilisk',
       theme: ThemeData(
         primarySwatch: Colors.grey,
+        fontFamily: "Gotham",
       ),
       home: const MyHomePage(title: 'Foodbasilisk'),
     );

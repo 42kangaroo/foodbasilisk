@@ -28,7 +28,6 @@ class _PricePageState extends State<PricePage> {
         },
         child: Card(
           child: Row(
-
             children: [
               Expanded(
                 child: Image.asset(
@@ -59,14 +58,16 @@ class _PricePageState extends State<PricePage> {
       ),
       // 2
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            makePrice("assets/LOW.png", "Low", price.LOW),
-            makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
-            makePrice(
-                "assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              makePrice("assets/LOW.png", "Low", price.LOW),
+              makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
+              makePrice(
+                  "assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
+            ],
+          ),
         ),
       ),
 
