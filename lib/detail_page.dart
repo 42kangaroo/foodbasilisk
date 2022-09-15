@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'restaurant.dart';
 
@@ -26,7 +28,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
         child: Column(
           children: [
             SizedBox(
-                height: 300,
+                height: 260,
                 width: double.infinity,
                 child: widget.restaurant.image),
             const SizedBox(
@@ -34,17 +36,76 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
             ),
             Text(
               widget.restaurant.label,
-              style: const TextStyle(fontSize: 24),
+              style: const TextStyle(fontSize: 30),
             ),
-            Column(
-              children: widget.restaurant.categories
-                  .map((String val) => Text(val))
-                  .toList(),
+            const SizedBox(
+              height: 4,
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Text(
+                "Categories:",
+                style: const TextStyle(
+                    fontSize: 23,
+                    fontWeight: FontWeight.w700,
+                    color: Color.fromARGB(255, 99, 99, 99)),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 2),
+              child: Column(
+                children: widget.restaurant.categories
+                    .map((String val) => Text(val,
+                        style: TextStyle(fontSize: 23, color: Colors.black)))
+                    .toList(),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Text(
+                widget.restaurant.address,
+                style: const TextStyle(fontSize: 23),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(top: 4),
+              child: Text(
+                widget.restaurant.distance.toString() + "min away",
+                style: const TextStyle(fontSize: 23),
+              ),
+            ),
+            Padding(
+                padding: EdgeInsets.only(top: 4),
+                child: Text("Price:",
+                    style: const TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromARGB(255, 99, 99, 99)))),
+            Padding(
+              padding: EdgeInsets.only(top: 2),
+              child: Text(
+                widget.restaurant.p.toString(),
+                style: const TextStyle(fontSize: 23),
+              ),
+            ),
+            Padding(
+                padding: EdgeInsets.only(top: 4),
+                child: Text("Opening Hours:",
+                    style: const TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromARGB(255, 99, 99, 99)))),
+            Padding(
+              padding: EdgeInsets.only(top: 2),
+              child: Text(
+                widget.restaurant.hours,
+                style: const TextStyle(fontSize: 23),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton:  FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);
         },

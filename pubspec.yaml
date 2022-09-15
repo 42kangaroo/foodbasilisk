@@ -80,8 +80,8 @@ flutter:
     - family: Gotham
       fonts:
         - asset: fonts/GothamMedium.ttf
-
-#        - asset: fonts/GothamBold.ttf
+        - asset: fonts/GothamBold.ttf
+          weight: 700 
 #        - asset: fonts/GothamLight.ttf
 #        - asset: fonts/GothamMediumItalic.ttf 
   #
