@@ -25,7 +25,10 @@ class _CategoryDetailState extends State<CategoryDetail> {
     return Card(
       child: Column(
         children: [
-          Image(image: category.icon),
+          Padding(
+            padding: const EdgeInsets.all(15),
+            child: Image(image: category.icon),
+          ),
           Text(
             category.category,
             style: const TextStyle(fontSize: 20),
@@ -62,7 +65,7 @@ class _CategoryDetailState extends State<CategoryDetail> {
           ),
         ),
       ),
-      floatingActionButton:  FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);
         },

@@ -29,10 +29,9 @@ class _DistancePageState extends State<DistancePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 4
-            // 5
+            Image.asset('assets/BikeIcon.png', scale: 5),
             const SizedBox(
-              height: 4,
+              height: 50,
             ),
             // 6
             Text(
@@ -57,11 +56,11 @@ class _DistancePageState extends State<DistancePage> {
                 });
               },
               // 5
-              activeColor: Colors.green,
+              activeColor: Colors.blueGrey,
               inactiveColor: Colors.black,
             ),
             TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
+              style: TextButton.styleFrom(backgroundColor: Colors.grey),
               onPressed: () {
                 Querry updatedQuerry = widget.querry;
                 updatedQuerry.distance = _sliderVal;
@@ -71,13 +70,14 @@ class _DistancePageState extends State<DistancePage> {
               },
               child: const Text(
                 "confirm",
-                style: TextStyle(color: Colors.white, fontSize: 20.0),
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
             ),
+            SizedBox(height: 100),
           ],
         ),
       ),
-      floatingActionButton:  FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);
         },

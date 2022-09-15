@@ -115,7 +115,10 @@ class _ResultPageState extends State<ResultPage> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
-                            Icon(Icons.search, size: 100,),
+                            Icon(
+                              Icons.search,
+                              size: 100,
+                            ),
                             Text(
                               "Searching for restaurants",
                               style: TextStyle(fontSize: 30),
