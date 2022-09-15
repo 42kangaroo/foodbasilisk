@@ -32,7 +32,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
                 width: double.infinity,
                 child: widget.restaurant.image),
             const SizedBox(
-              height: 6,
+              height: 12,
             ),
             Text(
               widget.restaurant.label,
@@ -46,7 +46,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               child: Text(
                 "Categories:",
                 style: const TextStyle(
-                    fontSize: 21,
+                    fontSize: 22,
                     fontWeight: FontWeight.w700,
                     color: Color.fromARGB(255, 99, 99, 99)),
               ),
@@ -56,7 +56,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               child: Column(
                 children: widget.restaurant.categories
                     .map((String val) => Text(val,
-                        style: TextStyle(fontSize: 21, color: Colors.black)))
+                        style: TextStyle(fontSize: 22, color: Colors.black)))
                     .toList(),
               ),
             ),
@@ -64,42 +64,42 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               padding: EdgeInsets.only(top: 8),
               child: Text(
                 widget.restaurant.address,
-                style: const TextStyle(fontSize: 21),
+                style: const TextStyle(fontSize: 22),
               ),
             ),
             Padding(
               padding: EdgeInsets.only(top: 8),
               child: Text(
                 widget.restaurant.distance.toString() + "min away",
-                style: const TextStyle(fontSize: 21),
+                style: const TextStyle(fontSize: 22),
               ),
             ),
             Padding(
                 padding: EdgeInsets.only(top: 6),
                 child: Text("Price:",
                     style: const TextStyle(
-                        fontSize: 21,
+                        fontSize: 22,
                         fontWeight: FontWeight.w700,
                         color: Color.fromARGB(255, 99, 99, 99)))),
             Padding(
               padding: EdgeInsets.only(top: 2),
               child: Text(
                 p[widget.restaurant.p.index],
-                style: const TextStyle(fontSize: 21),
+                style: const TextStyle(fontSize: 22),
               ),
             ),
             Padding(
                 padding: EdgeInsets.only(top: 6),
                 child: Text("Opening Hours:",
                     style: const TextStyle(
-                        fontSize: 21,
+                        fontSize: 22,
                         fontWeight: FontWeight.w700,
                         color: Color.fromARGB(255, 99, 99, 99)))),
             Padding(
               padding: EdgeInsets.only(top: 2),
               child: Text(
                 widget.restaurant.hours,
-                style: const TextStyle(fontSize: 21),
+                style: const TextStyle(fontSize: 22),
               ),
             ),
           ],
