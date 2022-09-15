@@ -3,3 +3,5 @@ enum price {
   MIDDLE,
   NO_RESTRICTION,
 }
+
+List<String> p = ["Low", "Middle", "High"];

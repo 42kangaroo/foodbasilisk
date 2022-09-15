@@ -1,6 +1,6 @@
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:foodbasilisk/price_enum.dart';
 import 'restaurant.dart';
 
 class RestaurantDetail extends StatefulWidget {
@@ -28,15 +28,15 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
         child: Column(
           children: [
             SizedBox(
-                height: 260,
+                height: 240,
                 width: double.infinity,
                 child: widget.restaurant.image),
             const SizedBox(
-              height: 4,
+              height: 6,
             ),
             Text(
               widget.restaurant.label,
-              style: const TextStyle(fontSize: 30),
+              style: const TextStyle(fontSize: 27),
             ),
             const SizedBox(
               height: 4,
@@ -46,7 +46,7 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               child: Text(
                 "Categories:",
                 style: const TextStyle(
-                    fontSize: 23,
+                    fontSize: 21,
                     fontWeight: FontWeight.w700,
                     color: Color.fromARGB(255, 99, 99, 99)),
               ),
@@ -56,50 +56,50 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               child: Column(
                 children: widget.restaurant.categories
                     .map((String val) => Text(val,
-                        style: TextStyle(fontSize: 23, color: Colors.black)))
+                        style: TextStyle(fontSize: 21, color: Colors.black)))
                     .toList(),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 4),
+              padding: EdgeInsets.only(top: 8),
               child: Text(
                 widget.restaurant.address,
-                style: const TextStyle(fontSize: 23),
+                style: const TextStyle(fontSize: 21),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 4),
+              padding: EdgeInsets.only(top: 8),
               child: Text(
                 widget.restaurant.distance.toString() + "min away",
-                style: const TextStyle(fontSize: 23),
+                style: const TextStyle(fontSize: 21),
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(top: 4),
+                padding: EdgeInsets.only(top: 6),
                 child: Text("Price:",
                     style: const TextStyle(
-                        fontSize: 23,
+                        fontSize: 21,
                         fontWeight: FontWeight.w700,
                         color: Color.fromARGB(255, 99, 99, 99)))),
             Padding(
               padding: EdgeInsets.only(top: 2),
               child: Text(
-                widget.restaurant.p.toString(),
-                style: const TextStyle(fontSize: 23),
+                p[widget.restaurant.p.index],
+                style: const TextStyle(fontSize: 21),
               ),
             ),
             Padding(
-                padding: EdgeInsets.only(top: 4),
+                padding: EdgeInsets.only(top: 6),
                 child: Text("Opening Hours:",
                     style: const TextStyle(
-                        fontSize: 23,
+                        fontSize: 21,
                         fontWeight: FontWeight.w700,
                         color: Color.fromARGB(255, 99, 99, 99)))),
             Padding(
               padding: EdgeInsets.only(top: 2),
               child: Text(
                 widget.restaurant.hours,
-                style: const TextStyle(fontSize: 23),
+                style: const TextStyle(fontSize: 21),
               ),
             ),
           ],
