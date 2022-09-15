@@ -29,10 +29,9 @@ class _DistancePageState extends State<DistancePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // 4
-            // 5
+            Image.asset('assets/BikeIcon.png', scale: 5),
             const SizedBox(
-              height: 4,
+              height: 50,
             ),
             // 6
             Text(
@@ -74,6 +73,7 @@ class _DistancePageState extends State<DistancePage> {
                 style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
             ),
+            SizedBox(height: 100),
           ],
         ),
       ),
