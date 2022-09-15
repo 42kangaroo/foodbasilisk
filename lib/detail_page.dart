@@ -61,14 +61,21 @@ class _RestaurantDetailState extends State<RestaurantDetail> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 8),
+                padding: EdgeInsets.only(top: 6),
+                child: Text("Address:",
+                    style: const TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.w700,
+                        color: Color.fromARGB(255, 99, 99, 99)))),
+            Padding(
+              padding: EdgeInsets.only(top: 2),
               child: Text(
                 widget.restaurant.address,
                 style: const TextStyle(fontSize: 22),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 8),
+              padding: EdgeInsets.only(top: 6),
               child: Text(
                 widget.restaurant.distance.toString() + "min away",
                 style: const TextStyle(fontSize: 22),

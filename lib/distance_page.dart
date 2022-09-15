@@ -36,7 +36,7 @@ class _DistancePageState extends State<DistancePage> {
             // 6
             Text(
               'Choose your distance\n'
-              'Your actual distance: $_sliderVal min',
+              'Distance by bike: $_sliderVal min',
               style: const TextStyle(fontSize: 18),
             ),
 
