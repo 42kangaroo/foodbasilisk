@@ -31,7 +31,7 @@ class FoodBasilisk extends StatelessWidget {
         primarySwatch: Colors.grey,
         fontFamily: "Gotham",
       ),
-      home: const MyHomePage(title: 'Foodbasilisk'),
+      home: const MyHomePage(title: 'FoodBasilisk'),
     );
   }
 }
@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                style: TextButton.styleFrom(backgroundColor: Colors.blueGrey),
+                style: TextButton.styleFrom(backgroundColor: Colors.grey),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return CategoryDetail(querry: querry);
@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text(
                   "Start Search",
-                  style: TextStyle(color: Colors.white, fontSize: 20.0),
+                  style: TextStyle(color: Colors.black, fontSize: 20.0),
                 ),
               ),
             ],

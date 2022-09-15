@@ -67,7 +67,7 @@ class _AddPageState extends State<AddPage> {
           });
         },
         child: Card(
-          shadowColor: (resto.p == p ? Colors.blue : Colors.black),
+          shadowColor: (resto.p == p ? Colors.blueGrey : Colors.black),
           elevation: 7,
           child: Column(
             children: [
@@ -87,7 +87,7 @@ class _AddPageState extends State<AddPage> {
     return Expanded(
       child: Text(
         text,
-        style: const TextStyle(fontSize: 20),
+        style: const TextStyle(fontSize: 15),
       ),
     );
   }
@@ -109,7 +109,7 @@ class _AddPageState extends State<AddPage> {
               controller: controller,
               decoration: InputDecoration(
                 focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue, width: 2.0),
+                  borderSide: BorderSide(color: Colors.grey, width: 2.0),
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
@@ -131,7 +131,7 @@ class _AddPageState extends State<AddPage> {
       padding: const EdgeInsets.symmetric(vertical: 5),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.blue, width: 1),
+          border: Border.all(color: Colors.grey, width: 1),
           borderRadius: BorderRadius.circular(4),
         ),
         child: DropdownButton(
@@ -166,7 +166,7 @@ class _AddPageState extends State<AddPage> {
           child: Column(
             children: [
               makeTextFieldQuestion(
-                  "Lable:", 'Enter the name of the restaurant', (val) {
+                  "Label:", 'Enter the name of the restaurant', (val) {
                 resto.label = val;
                 setState(() {});
               }, controllers[0]),
@@ -189,7 +189,7 @@ class _AddPageState extends State<AddPage> {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           const Text("Category:",
-                              style: TextStyle(fontSize: 20)),
+                              style: TextStyle(fontSize: 15)),
                           Padding(
                             padding: const EdgeInsets.fromLTRB(0, 10, 10, 5),
                             child: TextButton(
@@ -198,10 +198,10 @@ class _AddPageState extends State<AddPage> {
                                 setState(() {});
                               },
                               style: TextButton.styleFrom(
-                                  backgroundColor: Colors.blue),
+                                  backgroundColor: Colors.grey),
                               child: const Text(
                                 "Add",
-                                style: TextStyle(color: Colors.white),
+                                style: TextStyle(color: Colors.black),
                               ),
                             ),
                           ),
@@ -215,10 +215,10 @@ class _AddPageState extends State<AddPage> {
                                       setState(() {});
                                     },
                                     style: TextButton.styleFrom(
-                                        backgroundColor: Colors.blue),
+                                        backgroundColor: Colors.grey),
                                     child: const Text(
                                       "Remove",
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: Colors.black),
                                     ),
                                   ),
                                 )
@@ -264,7 +264,7 @@ class _AddPageState extends State<AddPage> {
                             resto.distance = newValue.round();
                           });
                         },
-                        activeColor: Colors.blue,
+                        activeColor: Colors.blueGrey,
                         inactiveColor: Colors.black,
                       ),
                     ),

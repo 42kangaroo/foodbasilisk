@@ -57,11 +57,11 @@ class _DistancePageState extends State<DistancePage> {
                 });
               },
               // 5
-              activeColor: Colors.green,
+              activeColor: Colors.blueGrey,
               inactiveColor: Colors.black,
             ),
             TextButton(
-              style: TextButton.styleFrom(backgroundColor: Colors.blue),
+              style: TextButton.styleFrom(backgroundColor: Colors.grey),
               onPressed: () {
                 Querry updatedQuerry = widget.querry;
                 updatedQuerry.distance = _sliderVal;
@@ -71,13 +71,13 @@ class _DistancePageState extends State<DistancePage> {
               },
               child: const Text(
                 "confirm",
-                style: TextStyle(color: Colors.white, fontSize: 20.0),
+                style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
             ),
           ],
         ),
       ),
-      floatingActionButton:  FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.popUntil(context, (route) => route.isFirst);
         },
