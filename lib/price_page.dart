@@ -17,7 +17,6 @@ class PricePage extends StatefulWidget {
 class _PricePageState extends State<PricePage> {
   Container makePrice(String asset, String name, price p) {
     return Container(
-      width: 100,
       child: GestureDetector(
         onTap: () {
           Querry updatedQuerry = widget.querry;
@@ -34,11 +33,15 @@ class _PricePageState extends State<PricePage> {
                   asset,
                 ),
               ),
+              const SizedBox(
+                width: 8,
+              ),
               Expanded(
                 child: Center(
                   child: Text(
                     name,
                     style: const TextStyle(fontSize: 30),
+                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -58,16 +61,16 @@ class _PricePageState extends State<PricePage> {
       ),
       // 2
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              makePrice("assets/LOW.png", "Low", price.LOW),
-              makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
-              makePrice(
-                  "assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            makePrice("assets/LOW.png", "Low", price.LOW),
+            makePrice("assets/MEDIUM.png", "Medium", price.MIDDLE),
+            makePrice(
+                "assets/HIGH.png", "No restriction", price.NO_RESTRICTION),
+          ],
         ),
       ),
 
