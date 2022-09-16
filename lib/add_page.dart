@@ -250,7 +250,7 @@ class _AddPageState extends State<AddPage> {
                 ),
                 child: Row(
                   children: [
-                    makeText("Distance: ${resto.distance} min"),
+                    makeText("Distance:\n ${resto.distance} min"),
                     Expanded(
                       flex: 3,
                       child: Slider(
