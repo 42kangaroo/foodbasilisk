@@ -29,7 +29,7 @@ class _DistancePageState extends State<DistancePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset('assets/BikeIcon.png', scale: 5),
+            Image.asset('assets/BikeIcon.png', scale: 4),
             const SizedBox(
               height: 50,
             ),
