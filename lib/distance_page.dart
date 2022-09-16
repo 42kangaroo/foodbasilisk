@@ -35,8 +35,9 @@ class _DistancePageState extends State<DistancePage> {
             ),
             // 6
             Text(
-              'Choose your distance\n'
-              'Distance by bike: $_sliderVal min',
+              'Distance by bike:\n'
+              '$_sliderVal min',
+              textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 18),
             ),
 
@@ -69,7 +70,7 @@ class _DistancePageState extends State<DistancePage> {
                 }));
               },
               child: const Text(
-                "confirm",
+                "Confirm",
                 style: TextStyle(color: Colors.black, fontSize: 20.0),
               ),
             ),
