@@ -117,11 +117,11 @@ class _ResultPageState extends State<ResultPage> {
                           children: const [
                             Icon(
                               Icons.search,
-                              size: 100,
+                              size: 90,
                             ),
                             Text(
                               "Searching for restaurants",
-                              style: TextStyle(fontSize: 30),
+                              style: TextStyle(fontSize: 25),
                             )
                           ],
                         ),
