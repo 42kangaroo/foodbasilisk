@@ -57,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/BaselMunster.jpg"),
+            image: AssetImage("assets/BaselMunster2.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -66,7 +66,11 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                style: TextButton.styleFrom(backgroundColor: Colors.grey),
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.grey,
+                  side: const BorderSide(width: 2, color: Colors.black),
+                  elevation: 500,
+                ),
                 onPressed: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
                     return CategoryDetail(querry: querry);
@@ -74,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 },
                 child: const Text(
                   "Start Search",
-                  style: TextStyle(color: Colors.black, fontSize: 20.0),
+                  style: TextStyle(color: Colors.black, fontSize: 25.0),
                 ),
               ),
             ],
