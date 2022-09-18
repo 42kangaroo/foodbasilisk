@@ -6,6 +6,7 @@ import 'querry.dart';
 import 'price_enum.dart';
 import 'firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'info_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,6 +54,17 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        actions: [
+          IconButton(
+            icon:
+                const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const InfoPage();
+              }));
+            },
+          ),
+        ],
       ),
       body: Container(
         decoration: const BoxDecoration(

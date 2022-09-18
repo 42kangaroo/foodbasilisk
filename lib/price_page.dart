@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodbasilisk/result_page.dart';
 import 'querry.dart';
 import 'price_enum.dart';
+import 'info_page.dart';
 
 class PricePage extends StatefulWidget {
   final Querry querry;
@@ -58,6 +59,17 @@ class _PricePageState extends State<PricePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose your price range'),
+        actions: [
+          IconButton(
+            icon:
+            const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const InfoPage();
+              }));
+            },
+          ),
+        ],
       ),
       // 2
       body: SafeArea(

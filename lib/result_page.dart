@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'detail_page.dart';
 import 'restaurant.dart';
-
+import 'info_page.dart';
 import 'querry.dart';
 
 class ResultPage extends StatefulWidget {
@@ -87,6 +87,17 @@ class _ResultPageState extends State<ResultPage> {
         return Scaffold(
           appBar: AppBar(
             title: const Text("Choose Restaurant"),
+            actions: [
+              IconButton(
+                icon:
+                const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const InfoPage();
+                  }));
+                },
+              ),
+            ],
           ),
           body: SafeArea(
             child: (res.isNotEmpty

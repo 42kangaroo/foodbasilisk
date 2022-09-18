@@ -5,6 +5,7 @@ import 'settings.dart';
 import 'category.dart';
 import 'querry.dart';
 import 'distance_page.dart';
+import 'info_page.dart';
 
 class CategoryDetail extends StatefulWidget {
   final Querry querry;
@@ -43,6 +44,17 @@ class _CategoryDetailState extends State<CategoryDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Choose Category"),
+        actions: [
+          IconButton(
+            icon:
+            const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const InfoPage();
+              }));
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: GridView.count(

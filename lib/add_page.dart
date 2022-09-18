@@ -5,6 +5,7 @@ import 'price_enum.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'restaurant.dart';
 import 'settings.dart';
+import 'info_page.dart';
 
 class AddPage extends StatefulWidget {
   FirebaseFirestore db;
@@ -160,6 +161,17 @@ class _AddPageState extends State<AddPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add a new Restaurant"),
+        actions: [
+          IconButton(
+            icon:
+            const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const InfoPage();
+              }));
+            },
+          ),
+        ],
       ),
       body: SafeArea(
         child: SingleChildScrollView(
