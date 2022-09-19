@@ -44,17 +44,15 @@ class _CategoryDetailState extends State<CategoryDetail> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Choose Category"),
-        actions: [
-          IconButton(
-            icon:
-            const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const InfoPage();
-              }));
-            },
-          ),
-        ],
+        leading: IconButton(
+          icon: const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const InfoPage();
+            }));
+          },
+        ),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: GridView.count(

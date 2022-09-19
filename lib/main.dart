@@ -54,17 +54,15 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        actions: [
-          IconButton(
-            icon:
-                const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const InfoPage();
-              }));
-            },
-          ),
-        ],
+        centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const InfoPage();
+            }));
+          },
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
