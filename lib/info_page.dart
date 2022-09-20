@@ -17,7 +17,10 @@ class _InfoPageState extends State<InfoPage> {
         title: const Text("Info"),
       ),
       body: SafeArea(
-        child: Text("Hello"),
+        child: Text(
+            """FoodBasilisk soll die unkomplizierte Auswahl eines Restaurants"""
+            """ermöglichen. Dies wird durch eine einfache und effiziente Benutzeroberfläche erreicht. Die App läuft mit einer online gespeicherten, hard-codierten Liste""",
+            style: TextStyle(fontSize: 18)),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
