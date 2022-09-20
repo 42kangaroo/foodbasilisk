@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 class InfoPage extends StatefulWidget {
@@ -15,6 +17,7 @@ class _InfoPageState extends State<InfoPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Info"),
+        centerTitle: true,
       ),
       body: SafeArea(
         child: Text(
