@@ -161,14 +161,6 @@ class _AddPageState extends State<AddPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Add a new Restaurant"),
-        leading: IconButton(
-          icon: const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const InfoPage();
-            }));
-          },
-        ),
         centerTitle: true,
       ),
       body: SafeArea(

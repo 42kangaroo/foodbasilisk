@@ -23,14 +23,6 @@ class _DistancePageState extends State<DistancePage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Choose your distance'),
-        leading: IconButton(
-          icon: const Icon(Icons.info_outline, color: Colors.black, size: 34.0),
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) {
-              return const InfoPage();
-            }));
-          },
-        ),
         centerTitle: true,
       ),
       // 2
