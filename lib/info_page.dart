@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class InfoPage extends StatefulWidget {
@@ -22,7 +20,8 @@ class _InfoPageState extends State<InfoPage> {
       body: SafeArea(
         child: Text(
             """FoodBasilisk soll die unkomplizierte Auswahl eines Restaurants"""
-            """ermöglichen. Dies wird durch eine einfache und effiziente Benutzeroberfläche erreicht. Die App läuft mit einer online gespeicherten, hard-codierten Liste""",
+            """ermöglichen. Dies wird durch eine einfache und effiziente Benutzeroberfläche erreicht. Die App läuft mit einer online gespeicherten, hard-codierten Liste, zu der man als User laufend Restaurants hinzufügen kann. 
+            Wir haben diese Application kreiert um Schülern am Gymnasium Bäumlihof eine Plattform zu geben, um Varietät in ihr Mittagessen zu bringen und troztdem auf das eigene Budget rücksicht zu nehmen.""",
             style: TextStyle(fontSize: 18)),
       ),
       floatingActionButton: FloatingActionButton(
